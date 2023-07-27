@@ -14,11 +14,11 @@
     - train.txt： 45840617 筆，11.15 GB
     - text.txt：6042135 筆，1.46 GB
 - Missing Value 比例高
-![](missing_value.png)
+![](pic/missing_value.png)
 - 數值型資料分布較廣
-![](box_plot.png)
+![](pic/box_plot.png)
 - 類別型資料部分欄位的類別眾多
-![](class_number.png)
+![](pic/class_number.png)
 
 
 ## 第一階段嘗試- LightGBM
@@ -38,9 +38,9 @@
     - 由於數據量過於龐大，在資源有限的情況，可以考慮只使用重要的特徵來做訓練，以提升效率。
     - 由於是分批訓練，每次訓練都會取得 Feature Importance，Importance 越小，代表該特徵在此模型的影響力越低，可以考慮拿掉，而分批訓練可以觀察在不同的資料分布情況之下，每種特徵是否都有一定的重要性。
         - 每種特徵的平均 Importance：
-        ![](avg_importance.png)
+        ![](pic/avg_importance.png)
         - 每種特徵的 Importance 為零的次數。從下圖可以看出有些特徵為零的次數很多，在很多情況之下，是沒有影響力的。
-        ![](zero_importance.png)
+        ![](pic/zero_importance.png)
 - 同時考慮 Feature Importance 和 缺值的情況，將 Feature Importance 為零次數大於 100，且缺值比例超過 40% 的特徵值移除，再試著訓練一次。
 
 ### 結果
@@ -49,7 +49,7 @@
 ## 第二階段嘗試- DeepFM
 DeepFM（Deep Factorization Machine）是一種深度學習模型，專門設計來處理這種包含大量類別型特徵的問題。可以利用深度學習的方式自動學習不同特徵之間的交互效應。例如，廣告的類別和用戶的地理位置可能會共同影響廣告被點擊的機率。
 
-![](DeepFM.png)
+![](pic/DeepFM.png)
 
 在此階段需要針對類別型資料做 Label Encoding，可能會耗費大量資源，所以決定購買 Colab Pro+，直接使用 Nvidia A100 和 83.5 GB的記憶體。
 
