@@ -1,5 +1,9 @@
 # Predict click-through rates on display ads
 
+## Slides
+
+- https://kuiming.github.io/criteo_ctr/slide/output/index.html#/
+
 ## Submission
 
 - **[csv file](https://drive.google.com/file/d/1BXTTNyeQsWSITXmNcyEktBitVXHxkLyB/view?usp=sharing)**
